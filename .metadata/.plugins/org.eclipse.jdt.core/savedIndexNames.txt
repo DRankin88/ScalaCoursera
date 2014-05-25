@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+/home/spaceproblems/eclipseWorkspace/ScalaCoursera/.metadata/.plugins/org.eclipse.jdt.core
+1319732789.index
+1993881207.index
+774564975.index
+919246033.index
+75204508.index
+1869927734.index

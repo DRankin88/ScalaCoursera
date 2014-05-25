@@ -1,0 +1,9 @@
+console
+compile
+test
+styleCheck
+test
+styleCheck
+console
+styleCheck
+sys.exit

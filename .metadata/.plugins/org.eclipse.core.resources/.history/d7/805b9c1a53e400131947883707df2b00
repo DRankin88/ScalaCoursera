@@ -1,0 +1,86 @@
+package recfun
+import common._
+
+object Main {
+    def main(args: Array[String])
+    {
+        // println("Pascal's Triangle")
+        // for (row <- 0 to 10) {
+        //     for (col <- 0 to row)
+        //         print(pascal(col, row) + " ")
+        //     println()
+
+        println("balance")
+        val input = "Th( ) true"
+        println(input)
+        println(balance(input.toList))
+//        val input1 = "Th( ) () ( ( ( ) ) )) false"
+//        println(input1)
+//        println(balance(input1.toList))
+//        val input2 = "Th( ) () ( ( ( ) ) )( false"
+//        println(input2)
+//        println(balance(input2.toList))
+//        }
+    }
+
+  /**
+   * Exercise 1
+   */
+    def pascal(c: Int, r: Int): Int =
+    {
+
+        if ((c == 0 || r == 0) || (c == r))
+        {
+            1
+        }
+        else
+        {
+            pascal(c - 1, r - 1) + pascal(c, r - 1)
+        }
+    }
+
+  /**
+   * Exercise 2
+   */
+    def balance(chars: List[Char]): Boolean =
+    {
+
+        var tracker = 0
+
+        def balanceHelper(chars: List[Char], incriment: Int): Int =
+        {
+            if(chars.head == '(')
+            {
+                tracker = balanceHelper(chars.tail, tracker = tracker + 1)
+                tracker
+            }
+            else if (chars.head == ')')
+            {
+                if (tracker - 1 < 0)
+                {
+                    tracker = - 1
+                    tracker
+                }
+                else
+                {
+                    tracker = balanceHelper(chars.tail, tracker - 1)
+                    tracker
+                }
+            }
+            else balanceHelper(chars.tail, tracker)
+
+        }
+
+        var result = balanceHelper(chars, tracker)
+        println(result)
+
+        if (result != 0) false
+        else true
+
+    }
+
+  /**
+   * Exercise 3
+   */
+  def countChange(money: Int, coins: List[Int]): Int = ???
+}
