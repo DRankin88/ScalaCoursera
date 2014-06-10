@@ -2,38 +2,6 @@ package recfun
 import common._
 
 object Main {
-    def main(args: Array[String])
-    {
-        // println("Pascal's Triangle")
-        // for (row <- 0 to 10) {
-        //     for (col <- 0 to row)
-        //         print(pascal(col, row) + " ")
-        //     println()
-
-        println("balance")
-        val input = "((()))((())())  true"
-        println(input)
-        println(balance(input.toList))
-        val input1 = "Th( ) () ( ( ( ) ) )) false"
-        println(input1)
-        println(balance(input1.toList))
-        val input2 = "()( false"
-        println(input2)
-        println(balance(input2.toList))
-        val input3 = "()((( false"
-        println(input3)
-        println(balance(input3.toList))
-        val input4 = "())) false"
-        println(input4)
-        println(balance(input4.toList))
-        val input5 = ") false"
-        println(input5)
-        println(balance(input5.toList))
-        val input6 = "( false"
-        println(input6)
-        println(balance(input6.toList))
-//        }
-    }
 
   /**
    * Exercise 1
@@ -85,15 +53,31 @@ object Main {
         }
 
         val result = balanceHelper(chars, 0)
-        println(result)
 
-        if (result != 0) false
-        else true
+        result == 0
 
     }
 
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+    def countChange(money: Int, coins: List[Int]): Int =
+    {
+
+        def count(subMoney: Int, subCoins: List[Int]): Int = {
+
+            if (subMoney == 0) 1
+            else if (subCoins.isEmpty && subMoney >= 1 || subMoney < 0 ) 0
+            else
+            {
+
+                count (subMoney, subCoins.tail) + count(
+                    subMoney - subCoins.head, subCoins)
+
+            }
+        }
+
+        count(money, coins.sortWith(_.compareTo(_) < 0))
+
+    }
 }
